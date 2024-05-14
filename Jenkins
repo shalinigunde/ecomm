@@ -16,7 +16,7 @@ pipeline{
                 sh 'sudo cp -rf ecomm/* /var/www/html/'
             }
         } 
-         stage('ecomm'){
+         stage('restart nginx'){
             steps{
                 sh 'sudo systemctl restart nginx'
             }
