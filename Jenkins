@@ -13,8 +13,14 @@ pipeline{
         } 
          stage('ecomm'){
             steps{
-                sh 'sudo cp -rf /var/www/html/*'
+                sh 'sudo cp -rf ecomm/* /var/www/html/'
+            }
+        } 
+         stage('ecomm'){
+            steps{
+                sh 'sudo systemctl restart nginx'
             }
         }
+
     }
 }
