@@ -1,6 +1,11 @@
 pipeline{
     agent any
     stages{
+        stage('notification'){
+            steps{
+                echo 'deployment started'
+            }
+        }
         stage('install nginx'){
             steps{
                 sh 'sudo apt install nginx -y'
