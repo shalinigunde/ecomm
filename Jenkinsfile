@@ -26,6 +26,11 @@ pipeline{
                 sh 'sudo systemctl restart nginx'
             }
         }
+          stage('If deployment is success'){
+            steps{
+                echo 'successfully deployed'
+            }
+        }
 
     }
 }
