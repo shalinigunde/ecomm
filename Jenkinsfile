@@ -31,6 +31,12 @@ pipeline{
                 echo 'successfully deployed'
             }
         }
+         stage('If deployment fails'){
+            steps{
+                echo 'deployment failure'
+            }
+        }
+
 
     }
 }
