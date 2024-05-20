@@ -44,11 +44,8 @@ pipeline{
                 teamDomain: 'dl-learnersworkspace', 
                 tokenCredentialId: 'slack', 
                 username: 'jenkins'
-        }
-
             }
         }
-
 
     }
 }
