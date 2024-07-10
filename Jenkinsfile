@@ -11,11 +11,6 @@ pipeline {
                 sh 'sudo apt install nginx -y'
             }
         }
-         stage ('checkout'){
-            steps{
-                git 'https://github.com/Raghava1201/ecomm.git'
-            }
-        }
          stage ('Delete default page'){
             steps{
                 sh 'sudo rm -rf /var/www/html/*'
