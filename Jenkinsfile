@@ -2,42 +2,42 @@ pipeline {
     agent any
     stages {
         stage('notification') {
-            step {
+            steps {
                 echo 'deployment started'
             }
         }
          stage('install nginx') {
-            step {
+            steps {
                 sh 'sudo apt install nginx -y'
             }
         }
          stage('checkout') {
-            step {
+            steps {
                 git 'https://github.com/Raghava1201/ecomm.git'
             }
         }
          stage('Delete default page') {
-            step {
+            steps {
                 sh 'sudo rm -rf /var/www/html/*'
             }
         }
          stage('copy to web server') {
-            step {
+            steps {
                 sh 'sudo cp -rf /var/lib/jenkins/workspace/ecomm/* /var/www/html/'
             }
         }
          stage('update nginx') {
-            step {
+            steps {
                 sh 'sudo systemctl restart nginx'
             }
         }
          stage('sucess') {
-            step {
+            steps {
                 echo 'deployment success'
             }
         }
          stage('If failure') {
-            step {
+            steps {
                 echo 'deployment failure'
             }
         }
