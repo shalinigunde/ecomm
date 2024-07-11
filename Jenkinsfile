@@ -6,8 +6,8 @@ pipeline {
                 echo 'deployment started'
             }
         }
-         stage('slack-notification') {
-            steps {
+         stage ('slack-notification'){
+            steps{
                 slackSend channel: 'devops',
                     color: '439FE0',
                     message: "started ${JOB_NAME} ${BUILD_NUMBER} (<${BUILD_URL}|Open>)",
