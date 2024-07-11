@@ -6,8 +6,7 @@ pipeline {
                 echo 'deployment started'
             }
         }
-        stages {
-          stage('slack-notification') {
+         stage('slack-notification') {
             steps {
                 slackSend channel: 'devops',
                     color: '439FE0',
