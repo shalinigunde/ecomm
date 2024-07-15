@@ -10,7 +10,7 @@ pipeline {
       post {
         always {
             emailext (
-                to: 'shalinibisa10@gmail.com, raghavarao750@gmail.com, shalinigunde@outlook.com',
+                to: 'shalinibisa10@gmail.com',
                 subject: "Job '${env.JOB-4}' (${env.BUILD_NUMBER}) is complete",
                 body: "Please check the Jenkins build job at ${env.BUILD_URL}"
             )
