@@ -5,17 +5,17 @@ pipeline {
             steps{
                 echo 'deployment started'
             }
+        }  
+      }
+      post {
+        always {
+            emailext (
+                to: 'shalinibisa10@gmail.com, raghavarao750@gmail.com, shalinigunde@outlook.com',
+                subject: "Job '${env.JOB-4}' (${env.BUILD_NUMBER}) is complete",
+                body: "Please check the Jenkins build job at ${env.BUILD_URL}"
+            )
         }
-         stage ('slack-notification'){
-            steps{
-                slackSend channel: 'devops',
-                    color: '439FE0',
-                    message: "started ${JOB_NAME} ${BUILD_NUMBER} (<${BUILD_URL}|Open>)",
-                    teamDomain: 'raghava-world',
-                    tokenCredentialId: 'slack',
-                    username: 'jenkins'
-            }
-        }
+    }
          stage ('install nginx'){
             steps{
                 sh 'sudo apt install nginx -y'
