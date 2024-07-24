@@ -1,13 +1,12 @@
 pipeline {
     agent any
-      stages{
-        stage ('notification'){
+      stages {
+        stage ('notification') {
             steps{
                 echo 'deployment started'
             }
         }  
-      }
-     stage ('Approval') {
+        stage ('Approval') {
             steps {
                 emailext subject: "Deployment Approval for lms service",
                     body: "<a href='${JENKINS_URL}/job/${JOB_NAME}/${BUILD_NUMBER}/input'>click to approve</a>",
@@ -36,35 +35,36 @@ pipeline {
                 }
             }
         }
-         stage ('install nginx') {
+        stage ('install nginx') {
             steps{
                 sh 'sudo apt install nginx -y'
             }
         }
-         stage ('Delete default page') {
+        stage ('Delete default page') {
             steps{
                 sh 'sudo rm -rf /var/www/html/*'
             }
         }
-         stage ('copy to web server') {
+        stage ('copy to web server') {
             steps{
                 sh 'sudo cp -rf /var/lib/jenkins/workspace/ecomm-job/* /var/www/html/'
             }
         }
-         stage ('update nginx') {
+        stage ('update nginx') {
             steps{
                 sh 'sudo systemctl restart nginx'
             }
         }
-         stage ('sucess') {
+        stage ('sucess') {
             steps{
                 echo 'deployment success'
             }
         }
-         stage ('If failure') {
+        stage ('If failure') {
             steps{
                 echo 'deployment failure'
             }
         }
+    }
 }
    
