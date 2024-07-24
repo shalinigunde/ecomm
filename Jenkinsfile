@@ -47,7 +47,7 @@ pipeline {
         }
         stage ('copy to web server') {
             steps{
-                sh 'sudo cp -rf /var/lib/jenkins/workspace/ecomm-job/* /var/www/html/'
+                sh 'sudo cp -rf /var/lib/jenkins/workspace/job-1/* /var/www/html/'
             }
         }
         stage ('update nginx') {
